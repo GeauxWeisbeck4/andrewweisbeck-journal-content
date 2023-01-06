@@ -1,12 +1,12 @@
 const siteMetadata = {
   title: 'Andrew Weisbeck Developer Journal',
   author: 'Andrew Weisbeck',
-  headerTitle: 'GeauxJournal',
+  headerTitle: 'GeauxWeisbeck4',
   description: 'A developer journal and blog by Andrew Weisbeck.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://andrews-dev-journal.vercel.app',
-  siteRepo: 'https://github.com/GeauxWeisbeck4/andrew-weisbeck-dev-journal',
+  siteUrl: 'https://andrewweisbeck-journal.vercel.app',
+  siteRepo: 'https://github.com/GeauxWeisbeck4/andrewweisbeck-journal',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
@@ -14,29 +14,18 @@ const siteMetadata = {
   github: 'https://github.com/GeauxWeisbeck4',
   twitter: 'https://twitter.com/GeauxWeisbeck4',
   facebook: 'https://facebook.com/GeauxWeisbeck4',
-  youtube: 'https://youtube.com',
+  youtube: 'https://www.youtube.com/channel/UC8S2Rk7U83DnGaT3EibIREwhttps://youtube.com',
   linkedin: 'https://www.linkedin.com/in/GeauxWeisbeck4',
   locale: 'en-US',
   analytics: {
-    // If you want to use an analytics provider you have to add it to the
-    // content security policy in the `next.config.js` file.
-    // supports plausible, simpleAnalytics, umami or googleAnalytics
-    plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
-    simpleAnalytics: false, // true or false
-    umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
-    posthogAnalyticsId: '', // posthog.init e.g. phc_5yXvArzvRdqtZIsHkEm3Fkkhm3d0bEYUXCaFISzqPSQ
+    posthogAnalyticsId: 'phc_WaDhI9h7o7OqlD1riIgt0WLYAyvGoJn2N5Qp5uqoCXS', // posthog.init e.g. phc_5yXvArzvRdqtZIsHkEm3Fkkhm3d0bEYUXCaFISzqPSQ
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
     // Please add your .env file and modify it according to your selection
-    provider: 'buttondown',
+    provider: 'emailoctopus',
   },
   comment: {
-    // If you want to use a commenting system other than giscus you have to add it to the
-    // content security policy in the `next.config.js` file.
-    // Select a provider and use the environment variables associated to it
-    // https://vercel.com/docs/environment-variables
     provider: 'giscus', // supported providers: giscus, utterances, disqus
     giscusConfig: {
       // Visit the link below, and follow the steps in the 'configuration' section
@@ -62,22 +51,6 @@ const siteMetadata = {
       // please provide a link below to your custom theme css file.
       // example: https://giscus.app/themes/custom_example.css
       themeURL: '',
-    },
-    utterancesConfig: {
-      // Visit the link below, and follow the steps in the 'configuration' section
-      // https://utteranc.es/
-      repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO,
-      issueTerm: '', // supported options: pathname, url, title
-      label: '', // label (optional): Comment 💬
-      // theme example: github-light, github-dark, preferred-color-scheme
-      // github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light
-      theme: '',
-      // theme when dark mode
-      darkTheme: '',
-    },
-    disqusConfig: {
-      // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-      shortname: process.env.NEXT_PUBLIC_DISQUS_SHORTNAME,
     },
   },
 }
