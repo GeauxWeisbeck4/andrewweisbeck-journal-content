@@ -1,23 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import siteMetadata from 'data/siteMetadata'
 import { useTheme } from 'next-themes'
+import { useCallback, useEffect } from 'react'
 
-import siteMetadata from '@/data/siteMetadata'
-
-const Giscus = () => {
-  const [enableLoadComments, setEnabledLoadComments] = useState(true)
-  const { theme, resolvedTheme } = useTheme()
-  const commentsTheme =
-    siteMetadata.comment.giscusConfig.themeURL === ''
-      ? theme === 'dark' || resolvedTheme === 'dark'
-        ? siteMetadata.comment.giscusConfig.darkTheme
-        : siteMetadata.comment.giscusConfig.theme
-      : siteMetadata.comment.giscusConfig.themeURL
-
+export default function Comment() {
+  const { theme } = useTheme()
   const COMMENTS_ID = 'comments-container'
 
   const LoadComments = useCallback(() => {
-    setEnabledLoadComments(false)
-
     const {
       repo,
       repositoryId,
@@ -29,7 +18,7 @@ const Giscus = () => {
       inputPosition,
       lang,
     } = siteMetadata?.comment?.giscusConfig
-
+    const siteUrl = window.location.origin
     const script = document.createElement('script')
     script.src = 'https://giscus.app/client.js'
     script.setAttribute('data-repo', repo)
@@ -41,10 +30,9 @@ const Giscus = () => {
     script.setAttribute('data-emit-metadata', metadata)
     script.setAttribute('data-input-position', inputPosition)
     script.setAttribute('data-lang', lang)
-    script.setAttribute('data-theme', commentsTheme)
+    script.setAttribute('data-theme', `${siteUrl}/css/giscus_${theme}.css`)
     script.setAttribute('crossorigin', 'anonymous')
     script.async = true
-
     const comments = document.getElementById(COMMENTS_ID)
     if (comments) comments.appendChild(script)
 
@@ -52,21 +40,14 @@ const Giscus = () => {
       const comments = document.getElementById(COMMENTS_ID)
       if (comments) comments.innerHTML = ''
     }
-  }, [commentsTheme])
-
-  // Reload on theme change
+  }, [theme])
   useEffect(() => {
-    const iframe = document.querySelector('iframe.giscus-frame')
-    if (!iframe) return
     LoadComments()
   }, [LoadComments])
 
   return (
-    <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">
-      {enableLoadComments && <button onClick={LoadComments}>Load Comments</button>}
-      <div className="giscus" id={COMMENTS_ID} />
+    <div id="comment">
+      <div className="giscus" id={COMMENTS_ID}></div>
     </div>
   )
 }
-
-export default Giscus
